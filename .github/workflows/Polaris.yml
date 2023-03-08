@@ -16,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Synopsys Action
-        uses: synopsys-sig/synopsys-action@0.1.192
+        uses: synopsys-sig/synopsys-action@v0.1.192
         with:
           polaris_serverUrl: ${{ secrets.POLARIS_SERVER_URL }}
           polaris_accessToken: ${{ secrets.POLARIS_ACCESS_TOKEN }}
