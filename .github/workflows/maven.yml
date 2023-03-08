@@ -31,5 +31,29 @@ jobs:
       run: mvn -B package --file pom.xml
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
+    
+    
     - name: Update dependency graph
       uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
+    - name: Create Black Duck Policy - Demo.blackduck.synopsys.com
+      env:
+        NODE_EXTRA_CA_CERTS: ${{ secrets.LOCAL_CA_CERT_PATH }}
+      uses: blackducksoftware/create-policy-action@v0.0.1
+      with:
+        blackduck-url: ${{ secrets.DEMO_BLACKDUCK_URL }}
+        blackduck-api-token: ${{ secrets.DEMO_BLACKDUCK_API_TOKEN }}
+        policy-name: 'My Black Duck Policy For GitHub Actions'
+        no-fail-if-policy-exists: true
+    - name: Run Synopsys Detect
+      uses: synopsys-sig/detect-action@v0.3.0
+      env:
+        NODE_EXTRA_CA_CERTS: ${{ secrets.LOCAL_CA_CERT_PATH }}
+      with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          detect-version: 7.9.0
+          blackduck-url: ${{ secrets.DEMO_BLACKDUCK_URL }}
+          blackduck-api-token: ${{ secrets.DEMO_BLACKDUCK_API_TOKEN }}
+          
+          
+          
+          
