@@ -16,9 +16,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
@@ -29,8 +27,7 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-
-   - name: Create Black Duck Policy - Demo.blackduck.synopsys.com
+    - name: Create Black Duck Policy - Demo.blackduck.synopsys.com
       env:
         NODE_EXTRA_CA_CERTS: ${{ secrets.LOCAL_CA_CERT_PATH }}
       uses: blackducksoftware/create-policy-action@v0.0.1
