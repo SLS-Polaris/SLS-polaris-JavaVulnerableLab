@@ -26,8 +26,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      clean-command: mvn -B clean
-      run: mvn -B package --file pom.xml
+      run: mvn -B clean package --file pom.xml
     #- name: Create Black Duck Policy - Demo.blackduck.synopsys.com
     #  env:
     #    NODE_EXTRA_CA_CERTS: ${{ secrets.LOCAL_CA_CERT_PATH }}
