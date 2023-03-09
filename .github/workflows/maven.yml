@@ -26,6 +26,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
+      run: mvn -B clean
       run: mvn -B package --file pom.xml
     #- name: Create Black Duck Policy - Demo.blackduck.synopsys.com
     #  env:
