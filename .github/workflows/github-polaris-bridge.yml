@@ -1,4 +1,4 @@
-name: Polaris SaaS
+name: Polaris SaaS - github-polaris-bridge
  
 on:
   push:
